@@ -1,0 +1,46 @@
+name: CI for Document Conversion App
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20' # Feel free to adjust the Node version as needed
+
+    - name: Install frontend dependencies
+      run: cd frontend && npm install
+
+    - name: Build React app
+      run: cd frontend && npm run build
+
+    - name: Run frontend tests
+      run: cd frontend && npm test # Assuming you have tests configured
+
+  build-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
+
+    - name: Install backend dependencies
+      run: cd backend && npm install
+
+    # Placeholder for running backend tests
+    - name: Run backend tests
+      run: echo "Run your backend tests here"
