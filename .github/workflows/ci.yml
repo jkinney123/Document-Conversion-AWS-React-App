@@ -31,7 +31,7 @@ jobs:
       - name: Install backend dependencies
         run: cd backend && npm install
       - name: Lint backend code
-        run: cd backend && npm run lint
+        run: cd backend && npx eslint . --ext .js,.jsx
 
   lint-lambda:
     runs-on: ubuntu-latest
@@ -44,6 +44,6 @@ jobs:
       - name: Install Lambda dependencies
         run: cd lambda && npm install
       - name: Lint Lambda function code
-        run: cd lambda && npm run lint
+        run: cd lambda && npx eslint . --ext .js,.jsx
 
   # Add other jobs for building/testing as needed
