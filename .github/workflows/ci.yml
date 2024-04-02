@@ -20,26 +20,28 @@ jobs:
       - name: Lint frontend code
         run: cd frontend && npm run lint
 
-  lint-backend:
+ lint-backend:
     runs-on: ubuntu-latest
-    container:
-      image: node:18-buster
     steps:
       - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
       - name: Install backend dependencies
         run: cd backend && npm install
       - name: Lint backend code
-        run: cd backend && npx eslint . --ext .js,.jsx
+        run: cd backend && sudo npx eslint . --ext .js,.jsx
 
   lint-lambda:
     runs-on: ubuntu-latest
-    container:
-      image: node:18-buster
     steps:
       - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
       - name: Install Lambda dependencies
         run: cd lambda && npm install
       - name: Lint Lambda function code
-        run: cd lambda && npx eslint . --ext .js,.jsx
-
-  # Add other jobs for building/testing as needed
+        run: cd lambda && sudo npx eslint . --ext .js,.jsx
