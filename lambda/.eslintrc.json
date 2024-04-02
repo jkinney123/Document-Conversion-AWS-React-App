@@ -13,6 +13,7 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "linebreak-style": "off"
     }
 }
