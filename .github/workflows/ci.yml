@@ -20,7 +20,7 @@ jobs:
       - name: Lint frontend code
         run: cd frontend && npm run lint
 
- lint-backend:
+  lint-backend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -45,3 +45,5 @@ jobs:
         run: cd lambda && npm install
       - name: Lint Lambda function code
         run: cd lambda && sudo npx eslint . --ext .js,.jsx
+
+  # Add other jobs for building/testing as needed
