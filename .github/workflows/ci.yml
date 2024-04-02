@@ -22,12 +22,10 @@ jobs:
 
   lint-backend:
     runs-on: ubuntu-latest
+    container:
+      image: node:18-buster
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
       - name: Install backend dependencies
         run: cd backend && npm install
       - name: Lint backend code
@@ -35,12 +33,10 @@ jobs:
 
   lint-lambda:
     runs-on: ubuntu-latest
+    container:
+      image: node:18-buster
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
       - name: Install Lambda dependencies
         run: cd lambda && npm install
       - name: Lint Lambda function code
