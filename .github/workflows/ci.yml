@@ -36,14 +36,21 @@ jobs:
   lint-lambda:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
-      - name: Install Lambda dependencies
-        run: cd lambda && npm install
-      - name: Lint Lambda function code
-        run: cd lambda && sudo npx eslint . --ext .js,.jsx
+    - uses: actions/checkout@v2
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+    
+    - name: Install Lambda dependencies
+      run: |
+        cd lambda
+        npm install
+    
+    - name: Lint Lambda function code
+      run: |
+        cd lambda
+        npm run lint
 
   # Add other jobs for building/testing as needed
